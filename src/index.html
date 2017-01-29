@@ -16,7 +16,7 @@
     </style>
 </head>
 <body>
-  <div id="tickerTapeDiv"></div>
+  <div id="app"></div>
 <!-- build:dev -->
 <!-- endbuild -->
     
@@ -25,7 +25,9 @@
     goog.require('Tuka');
 </script>
 <script>
-  var t = new Tuka()
+  var t = new Tuka({
+    el: "app",
+  })
 </script>
 <!-- endbuild -->
 </body>

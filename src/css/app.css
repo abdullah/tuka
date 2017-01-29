@@ -1,0 +1,24 @@
+body{
+	background-color: #ccc;
+}
+
+.tuka-app{
+	
+}
+
+.tuka-list{
+	position: fixed;
+	width: 200px;
+	height: 100%;
+	right: 10px;
+	top: 10px;
+	background-color: #f2f2f2;
+}
+
+.tuka-area{
+	max-width: 970px;
+	height: auto;
+	padding: 10px;
+	background-color: #f2f2f2;
+	margin: 20px auto;
+}

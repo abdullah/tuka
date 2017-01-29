@@ -1491,4 +1491,4 @@ goog.addDependency('../../../../../node_modules/google-closure-library/closure/g
 goog.addDependency('../../../../../node_modules/google-closure-library/closure/goog/window/window_test.js', ['goog.windowTest'], ['goog.Promise', 'goog.dom', 'goog.dom.TagName', 'goog.events', 'goog.functions', 'goog.html.SafeUrl', 'goog.labs.userAgent.browser', 'goog.labs.userAgent.engine', 'goog.labs.userAgent.platform', 'goog.string', 'goog.testing.PropertyReplacer', 'goog.testing.TestCase', 'goog.testing.jsunit', 'goog.window'], false);
 goog.addDependency('../../../../app.js', ['App'], [], false);
 goog.addDependency('../../../../store.js', ['Store'], [], false);
-goog.addDependency('../../../../tuka.js', ['Tuka'], ['App', 'Store'], false);
+goog.addDependency('../../../../tuka.js', ['Tuka'], ['App', 'Store', 'goog.dom', 'goog.dom.classlist'], false);

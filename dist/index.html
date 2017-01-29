@@ -16,7 +16,8 @@
     </style>
 </head>
 <body>
-  <div id="tickerTapeDiv"></div>
+  <div id="app"></div>
+<link rel="stylesheet" href="css/app.css">
 <script src="node_modules/google-closure-library/closure/goog/base.js"></script>
 <script src="deps.js"></script>
     
@@ -24,7 +25,9 @@
     goog.require('Tuka');
 </script>
 <script>
-  var t = new Tuka()
+  var t = new Tuka({
+    el: "app",
+  })
 </script>
 </body>
 </html>
