@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TUKA</title>
+    <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        border: 0;
+        overflow: hidden; /*  Disable scrollbars */
+        display: block;  /* No floating content on sides */
+      }
+    </style>
+</head>
+<body>
+  <div id="tickerTapeDiv"></div>
+<script src="node_modules/google-closure-library/closure/goog/base.js"></script>
+<script src="deps.js"></script>
+    
+<script>
+    goog.require('Tuka');
+</script>
+<script>
+  var t = new Tuka()
+</script>
+</body>
+</html>
