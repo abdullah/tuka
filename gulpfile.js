@@ -165,9 +165,9 @@ gulp.task('compile', function () {
     return gulp.src(paths.scripts)
         .pipe(closureCompiler({
             compilerPath: 'node_modules/google-closure-compiler/compiler.jar',
-            fileName: 'app.js',
+            fileName: 'ttuka.js',
             compilerFlags: {
-                closure_entry_point: 'app',
+                closure_entry_point: 'Tuka',
                 compilation_level: 'ADVANCED_OPTIMIZATIONS',
                 only_closure_dependencies: true,
                 warning_level: 'QUIET',
@@ -176,7 +176,7 @@ gulp.task('compile', function () {
                 output_wrapper: '(function(){%output%})();',
             }
         }))
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('release'));
 });
 
 

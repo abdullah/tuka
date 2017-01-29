@@ -1,13 +1,19 @@
 goog.provide('App')
+goog.require('Store')
 
 
 /**
  * @constructor
  */
-App = function () {
-
+App = function (store) {
+	
 }
 
-App.prototype.init = function(){
-		
+App.prototype.store = Store;
+
+App.prototype.start = function(){
+};
+
+App.prototype.update = function(){
+	
 };

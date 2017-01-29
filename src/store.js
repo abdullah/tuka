@@ -1,25 +1,48 @@
 goog.provide('Store')
 
-
-/**
- * @constructor
- */
-Store = function () {
-	this.state = {
-		rows: []
-	}
+var state = {
+	rows: [],
+	modules:[]
 }
 
-Store.prototype.setRows = function(rows){
-	this.state.rows = rows;
-};
+var handlers = [];  // observers
 
-Store.prototype.addRow = function (row) {
-	this.state.rows.push(row)
-	return this.state.rows
+
+Store.setRows =  function(rows){
+	state.rows = rows;
 }
 
-Store.prototype.getRows = function (row) {
-	return this.state.rows
+Store.setModules =  function(modules){
+	state.modules = modules;
 }
 
+Store.addRow =  function (row) {
+	state.rows.push(row)
+	return state.rows
+}
+
+Store.getRows =  function (row) {
+	return state.rows
+}
+
+/** Observerble pattern */
+Store.subscribe =  function(fn) {
+    handlers.push(fn);
+}
+
+Store.unsubscribe =  function(fn) {
+    handlers = handlers.filter(
+        function(item) {
+            if (item !== fn) {
+                return item;
+            }
+        }
+    );
+}
+
+Store.fire =  function(o, thisObj) {
+    var scope = thisObj || window;
+    handlers.forEach(function(item) {
+        item.call(scope, o);
+    });
+}

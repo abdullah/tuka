@@ -3,43 +3,46 @@ goog.require('Store')
 goog.require('App')
 
 goog.require('goog.dom')
+goog.require('goog.array')
 goog.require('goog.dom.classlist')
 
 /**
  * Default object
  * @type {Object}
- * @todo Remove modules after change location of modules 
+ * @export
+ * @todo Remove modules after change location of modules  
  */
 var _opt = {
-	el: "#app",
-	language:["en","tr"],
+	el: "app",
+	languages:["en","tr"],
 	defaultLanguage:"tr",
 	modules:[
 		{
 			name: "module_one",
-			template:`<div contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, itaque?</div>`,
+			template:'<div contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, itaque?</div>',
 			languages:{},
 			fields:{}
 		}
 	],
-	rows:[],
+	rows:[]
 }
 
 /**
  * @constructor
  * @return {Tuka} The Tuka 
  * @todo Merge _opt to options
- * @todo update
+ * @export
  * @todo Set language of modules
  */
 Tuka = function (options) {
 	/** @type {object}  */
-	this.options = options
+	this.options = _opt;
+	// Store.subscribe(this.update);
 	this.init();
 }
 
 
-Tuka.prototype.store = new Store();
+Tuka.prototype.store = Store;
 Tuka.prototype.app = new App();
 
 /**
@@ -47,6 +50,31 @@ Tuka.prototype.app = new App();
  * @return {Void} 
  */
 Tuka.prototype.init = function(){
+
+	var rows = goog.array.clone(this.options.rows);
+	this.store.setRows(rows)
+
+	this.setDomNodes()
+	this.setLanguageForModule()
+
+};
+
+Tuka.prototype.setLanguageForModule = function(){
+	
+	var modules = goog.array.clone(this.options.modules);
+	var languages = goog.array.clone(this.options.languages);
+
+	languages.forEach( function(lang) {
+		modules.forEach( function(module) {
+			module.languages[lang] = ""
+		});
+	});
+
+	this.store.setModules(modules);
+};
+
+
+Tuka.prototype.setDomNodes = function(){
 	/** Create dom nodes */
 	var el   = goog.dom.getElement(this.options.el);
 	
@@ -56,10 +84,14 @@ Tuka.prototype.init = function(){
 	goog.dom.appendChild(el,list);
 	goog.dom.appendChild(el,area);
 	goog.dom.classlist.add(el,"tuka-app");
-	
-	/** Init rows  */
-	this.store.setRows(this.options.rows)
 };
+
+
+
+
+
+
+
 
 
 
