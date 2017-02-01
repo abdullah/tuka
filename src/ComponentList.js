@@ -16,9 +16,9 @@ ComponentList.prototype.render = function(){
 	var components = this.store.getComponents();
 	var that = this;
 	
-	components.forEach( function(c) {
+	components.forEach( function(component) {
 		
-		var component = goog.dom.createDom('A',{
+		var componentNode = goog.dom.createDom('A',{
 			class: "module-list-item",
 			href: "#"
 		});
@@ -28,18 +28,33 @@ ComponentList.prototype.render = function(){
 			style: "width: 100px"
 		});
 
-		thumbnail.src = c.thumbnail
+		thumbnail.src = component.thumbnail
 
-		component.onclick = function () {
-			that.store.addRow(c)
+		componentNode.onclick = function () {
+			that.generateComponentFields(component)
 		}
 
-		goog.dom.appendChild(component,thumbnail)
-		goog.dom.appendChild(DomNodes.LIST,component)
+		goog.dom.appendChild(componentNode,thumbnail)
+		goog.dom.appendChild(DomNodes.LIST,componentNode)
 	});
 	
 };
 
-ComponentList.prototype.update = function(){
+
+
+ComponentList.prototype.generateComponentFields = function(component){
+	var languages = this.store.getLanguages();
+
+	component.contents = {};
+	languages.forEach( function(lang) {
+		component.contents[lang] = {}
+		component.contents[lang].fields = {}
+		component.contents[lang].html = component.template
+	});
+
+
+	this.store.addRow(component)
 	
 };
+
+

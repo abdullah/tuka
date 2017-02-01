@@ -1,48 +1,57 @@
 goog.provide('Store')
 goog.require('RenderTypes')
 
-var state = {
+Store.state = {
+    languages: [],
     currentLanguage:"",
-	rows: [],
-	modules:[]
+    splitArea:false,
+    rows: [],
+    modules:[]
 }
 
 var handlers = [];  // observers
 
+Store.setLanguages = function (langs) {
+    this.state.languages = langs
+}
+
+Store.getLanguages = function (langs) {
+    return this.state.languages
+}
 
 Store.setCurrentLanguage = function (l) {
-    state.currentLanguage = l
+    this.state.currentLanguage = l
 }
 
 Store.getCurrentLanguage = function () {
-    return state.currentLanguage
+    return this.state.currentLanguage
 }
 
 Store.setRows =  function(rows){
-	state.rows = rows;
+	this.state.rows = rows;
 }
 
 Store.setComponents =  function(modules){
-	state.modules = modules;
+	this.state.modules = modules;
 }
 
 Store.addRow =  function (row) {
-	state.rows.push(row);
+	this.state.rows.push(row);
     
     this.fire(null,{
         renderType: RenderTypes.NEW_ROW,
         row: row,
     })
 
-	return state.rows
+	return this.state.rows
 }
 
 Store.getRows =  function (row) {
-    return state.rows
+    return this.state.rows
 }
 
 Store.getComponents =  function (row) {
-	return state.modules
+	return this.state.modules
 }
 
 /** Observerble pattern */

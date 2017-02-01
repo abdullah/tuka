@@ -37,7 +37,6 @@ var _opt = {
 Tuka = function (options) {
 	/** @type {object}  */
 	this.options = _opt;
-	// Store.subscribe(this.update);
 	this.init();
 }
 
@@ -52,33 +51,16 @@ Tuka.prototype.app = new App();
 Tuka.prototype.init = function(){
 
 	var rows = goog.array.clone(this.options.rows);
-	this.store.setRows(rows)
+	var components = goog.array.clone(this.options.Component);
 
-	this.setDomNodes()
-	this.setLanguageForModule()
+	this.store.setRows(rows)
+	this.store.setComponents(components);
 	this.store.setCurrentLanguage(this.options.defaultLanguage)
+	this.store.setLanguages(this.options.languages)
+	
+	this.setDomNodes()
 	this.app.start()
 
-};
-
-/**
- * This method will be create contents property each Component
- */
-Tuka.prototype.setLanguageForModule = function(){
-	
-	var Component = goog.array.clone(this.options.Component);
-	var languages = goog.array.clone(this.options.languages);
-
-	Component.forEach( function(module) {
-		module.contents = {};
-		languages.forEach( function(lang) {
-			module.contents[lang] = {}
-			module.contents[lang].fields = {}
-			module.contents[lang].html = ""
-		});
-	});
-
-	this.store.setComponents(Component);
 };
 
 
@@ -92,6 +74,7 @@ Tuka.prototype.setDomNodes = function(){
 	goog.dom.appendChild(DomNodes.APP,DomNodes.LIST);
 	goog.dom.appendChild(DomNodes.APP,DomNodes.AREA);
 	goog.dom.classlist.add(DomNodes.APP,"tuka-app");
+	
 };
 
 
