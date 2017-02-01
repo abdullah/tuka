@@ -12,17 +12,22 @@ Store.setRows =  function(rows){
 	state.rows = rows;
 }
 
-Store.setModules =  function(modules){
+Store.setComponents =  function(modules){
 	state.modules = modules;
 }
 
 Store.addRow =  function (row) {
-	state.rows.push(row)
+	state.rows.push(row);
+    this.fire()
 	return state.rows
 }
 
 Store.getRows =  function (row) {
-	return state.rows
+    return state.rows
+}
+
+Store.getComponents =  function (row) {
+	return state.modules
 }
 
 /** Observerble pattern */

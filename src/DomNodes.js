@@ -1,0 +1,3 @@
+goog.provide('DomNodes')
+
+DomNodes = {}
