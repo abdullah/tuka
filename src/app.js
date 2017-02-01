@@ -16,7 +16,9 @@ App.prototype.area = new Area();
 
 App.prototype.start = function(){
 	this.CL.render()
-	this.area.render()
+	this.area.render({
+		renderType: RenderTypes.FULL_ROW
+	})
 };
 
 App.prototype.update = function(){

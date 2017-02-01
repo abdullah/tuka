@@ -1489,9 +1489,11 @@ goog.addDependency('../../../../../node_modules/google-closure-library/closure/g
 goog.addDependency('../../../../../node_modules/google-closure-library/closure/goog/webgl/webgl.js', ['goog.webgl'], [], false);
 goog.addDependency('../../../../../node_modules/google-closure-library/closure/goog/window/window.js', ['goog.window'], ['goog.dom.TagName', 'goog.dom.safe', 'goog.html.SafeUrl', 'goog.html.uncheckedconversions', 'goog.labs.userAgent.platform', 'goog.string', 'goog.string.Const', 'goog.userAgent'], false);
 goog.addDependency('../../../../../node_modules/google-closure-library/closure/goog/window/window_test.js', ['goog.windowTest'], ['goog.Promise', 'goog.dom', 'goog.dom.TagName', 'goog.events', 'goog.functions', 'goog.html.SafeUrl', 'goog.labs.userAgent.browser', 'goog.labs.userAgent.engine', 'goog.labs.userAgent.platform', 'goog.string', 'goog.testing.PropertyReplacer', 'goog.testing.TestCase', 'goog.testing.jsunit', 'goog.window'], false);
-goog.addDependency('../../../../Area.js', ['Area'], ['DomNodes', 'Store', 'goog.dom'], false);
+goog.addDependency('../../../../Area.js', ['Area'], ['DomNodes', 'RenderTypes', 'Row', 'Store', 'goog.dom', 'goog.string'], false);
 goog.addDependency('../../../../ComponentList.js', ['ComponentList'], ['DomNodes', 'Store', 'goog.dom'], false);
 goog.addDependency('../../../../DomNodes.js', ['DomNodes'], [], false);
+goog.addDependency('../../../../RenderTypes.js', ['RenderTypes'], [], false);
+goog.addDependency('../../../../Row.js', ['Row'], ['DomNodes', 'Store', 'goog.dom', 'goog.string'], false);
 goog.addDependency('../../../../app.js', ['App'], ['Area', 'ComponentList', 'Store'], false);
-goog.addDependency('../../../../store.js', ['Store'], [], false);
+goog.addDependency('../../../../store.js', ['Store'], ['RenderTypes'], false);
 goog.addDependency('../../../../tuka.js', ['Tuka'], ['App', 'DomNodes', 'Store', 'goog.array', 'goog.dom', 'goog.dom.classlist'], false);

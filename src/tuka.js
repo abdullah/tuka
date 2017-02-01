@@ -56,6 +56,7 @@ Tuka.prototype.init = function(){
 
 	this.setDomNodes()
 	this.setLanguageForModule()
+	this.store.setCurrentLanguage(this.options.defaultLanguage)
 	this.app.start()
 
 };
